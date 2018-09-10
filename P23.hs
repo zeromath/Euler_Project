@@ -1,5 +1,5 @@
 import Data.List
-import Data.List.Ordered
+import Data.List.Ordered -- cabal install data-ordlist
 
 factors :: Int -> Int
 factors 1 = 1
