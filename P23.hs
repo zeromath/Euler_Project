@@ -1,4 +1,5 @@
 import Data.List
+import Data.List.Ordered
 
 factors :: Int -> Int
 factors 1 = 1
@@ -12,12 +13,9 @@ factors n = 1 + sum list_of_small_factors + (sum . map (n `div`) $ list_of_small
 
 abundant_number_list = filter (\x -> x < factors x) . take 28123 $ [1..]
 
-notSum :: Int -> Bool
-notSum n = (map (`subtract` n) l) `intersect` l == []
-  where
-    l = takeWhile (<n) abundant_number_list
+sum_of_abun_list = takeWhile (<28123) . nubSort $ (+) <$> abundant_number_list <*> abundant_number_list
 
 main :: IO()
 main = do
- let x = sum . filter notSum $ [1..28123]
+ let x = 395437503 - sum(sum_of_abun_list)
  print x -- 4179871
