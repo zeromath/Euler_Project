@@ -1,5 +1,6 @@
 primes = 2 : filter (null . tail . primeFactors) [3,5..]
- 
+
+primeFactors :: Int -> [Int]
 primeFactors n = factor n primes
   where
     factor n (p:ps) 
